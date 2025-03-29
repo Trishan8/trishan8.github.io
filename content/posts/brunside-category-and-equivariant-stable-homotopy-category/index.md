@@ -7,7 +7,7 @@ tags: ["cohomology", "Algebra", "Algebraic Topology"]
 {{< katex >}}
 
 
-It's been a long time since I wrote my first blog for this website. This time, I plan to continue writing regularly—at least once every two weeks. I'll mainly focus on topics I am currently learning or find fascinating. For now, I'll be writing a few blogs related to topics in equivariant homotopy theory.
+It has been a long time since I wrote my first blog for this website. This time, I plan to continue writing regularly—at least once every two weeks. I'll mainly focus on topics I am currently learning or find fascinating. For now, I'll be writing a few blogs related to topics in equivariant homotopy theory.
 
 ## Why Equivariant Homotopy Theory?  
 

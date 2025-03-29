@@ -33,17 +33,17 @@ smartTOCHideUnfocusedChildren = true
   showScrollToTop = true
 
 [homepage]
-  layout = "page" # valid options: page, profile, hero, card, background, custom
+  layout = "background" # valid options: page, profile, hero, card, background, custom
   #homepageImage = "IMAGE.jpg" # used in: hero, and card
-  homepageImage = "logo2.jpg"
+  homepageImage = "logo4.jpg"
   showRecent = true
   showRecentDest = "/posts"     
   showRecentItems = 5
   showMoreLink = true
   showMoreLinkDest = "/posts"
-  cardView = false
-  cardViewScreenWidth = false
-  layoutBackgroundBlur = false # only used when layout equals background
+  cardView = true
+  cardViewScreenWidth = true
+  layoutBackgroundBlur = true # only used when layout equals background
   layoutBackgroundHeaderSpace = false
 
 [article]
