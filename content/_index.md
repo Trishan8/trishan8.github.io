@@ -3,13 +3,15 @@ title: "Trishan Mondal"
 description: "Welcome to my website"
 ---
 
-{{< katex >}}
+
 
 **Hello Everyone! Welcome to my webpage!**
 
-<img src="featured.webp" width="100" height="80" alt="*picture*" align=right>
+<!-- <img src="featured.webp" width="100" height="80" alt="*picture*" align=right> -->
 
 I am a first year master(M.Math) student at <a href="https://www.isical.ac.in/" style="color:hsl(263, 69.40%, 71.80%) ">Indian Statistical Institute, Kolkata</a>. My mathematical interests includes homotopy theory and related areas. <br>
+
+<img src="featured.png" width="200" align=right>
 
 ><a style="color:yellow">Contact detalis:</a>
 >
@@ -18,6 +20,7 @@ Indian Statistical Institute, Kolkata <br>
 Student email: mmat2437[at]isical[dot]ac[dot]in<br>
 </span>
 <span style="color: #d2d5d8; font-family: 'Garamond'; font-size: 1em;">Personal gmail: trishanmondal004</span>
+
 
 <!-- <span style="color:rgb(253, 253, 253); font-family: 'Garamond; font-size: 1em;">Student email: mmat2437[at]isikol[dot]ac[dot]in</span> -->
 
