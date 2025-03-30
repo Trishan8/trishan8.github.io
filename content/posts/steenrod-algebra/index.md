@@ -9,7 +9,7 @@ series_order: 1
 
 ## Introduction
 
-Let $k$ be a generalized cohomology theory on the category of CW complexes. Then cohomology operation of type $(n,n+m,\pi,G)$ is a natual transformation $\phi : k^{n}(-,\pi)\to k^{n+m}(-,G)$. 
+Let \\(k\\) be a generalized cohomology theory on the category of CW complexes. Then cohomology operation of type $(n,n+m,\pi,G)$ is a natual transformation $\phi : k^{n}(-,\pi)\to k^{n+m}(-,G)$. 
 
 By the *Brown representability theorem* we can represent $k^{n}$ by some based topological space $Z$. The following lemma will ensure that the cohomology operation are in one one correspondence with the elements of $k^{n+m}(Z;G)$. 
 
