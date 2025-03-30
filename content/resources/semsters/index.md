@@ -3,8 +3,6 @@ title: "Semester works"
 date: 2024-01-01
 draft: false
 description: "Semester works"
-series: ["Resources"]
-series_order: 2
 ---
 
 semester works
