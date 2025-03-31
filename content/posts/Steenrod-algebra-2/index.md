@@ -72,7 +72,7 @@ Note that $Sq(x) = x + x^2$. Using the fact that $Sq$ is a ring homomorphism, we
 - In general, $\Sigma^k CP^2$ is never homotopy equivalent to a wedge of spheres.  
 - In other words, the Hopf map $\eta: S^3 \to S^2$ never becomes null after suspending. Thus, $\Sigma^k \eta$ represents a non-trivial element in $\pi_1^S$, and in fact, by the Freudenthal suspension theorem, this is the generator of the stable stem 1.
 
-$Sq^n$ is *decomposable* if $Sq^n = \sum_{k < n} Sq^I(k) Sq(k).$
+$Sq^n$ is *decomposable* if $Sq^n = \sum_{k < n} Sq^{I(k)} Sq^k.$
 
 > $Sq^n$ is indecomposable iff $n = 2^k$.
 

@@ -1,5 +1,5 @@
 ---
-title: "Steenrod operation and Steenrod algebra"
+title: "Cohomology of Eilenberg-Maclane Spaces"
 description: "Nothing as such"
 date: 2025-04-30
 series: ["Steenrod algebra and spectral sequences"]
