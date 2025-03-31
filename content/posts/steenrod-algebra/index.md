@@ -1,5 +1,5 @@
 ---
-title: "Steenrod operation and Steenrod algebra"
+title: "Construction of Steenrod operations"
 description: "Nothing as such"
 date: 2025-03-29
 series: ["Steenrod algebra and spectral sequences"]
@@ -84,7 +84,7 @@ We know for any pair $(X,A)$ there is an exect sequence of cochian complexes $$0
 -  For $x \in H^{p}(X;Z_2)$ or $\deg x= p$ we have, $Sq^i(x)=0$ for $p>i$.
 - $Sq^n(x)=x^2$ for $\deg x = n$.
 - *Cartan formula:* $Sq^i(xy)= \sum_{j} Sq^jx Sq^{i-j}y$.   
-- *Adam Relation.* The steenrod opertaions satisfy the following relation, (for $i<2j$) $$ Sq^iSq^j=\sum_k \binom{j-k-i}{j-2k}Sq^{i+j-k} Sq^k $$
+- *Adem Relation.* The steenrod opertaions satisfy the following relation, (for $i<2j$) $$ Sq^iSq^j=\sum_k \binom{j-k-i}{j-2k}Sq^{i+j-k} Sq^k $$
 
 <html>
 <head>
