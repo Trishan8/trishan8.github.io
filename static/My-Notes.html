@@ -1,169 +1,290 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-      <title>My Notes</title>
-      <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-      </script>
-      <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-      </script>
-    </head>
-    <style type="text/css">
-        h1{
-        color:rgb(11, 8, 26); 
-        font-family: arial;
-        border:0px solid #CCC;
-        text-decoration: underline;
-        }
-         h2{
-         color: rgb(9, 6, 70);;
-         font-family: arial;
-         font-size:x-large;
-        }
-        li{
-            margin-left:30px;
-        }
-        a{
-         font-size: medium;
-         font-family: Arial;
-        }
-        b{
-            font-size: medium;
-            font-family: Arial;
-           }
+<head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activities</title>
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-           body{
-         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .topnav {
-            position: fixed; top: 0; left: 0; z-index: 9999; width: 100%;
-            overflow: hidden;
-            background-color: #202c3c;
-          }
-          
-          
-          .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 0px 32px;
-            text-decoration: solid;
-            font-size: 17px;
-          }
-          
-          .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-          }
-          
-          .topnav a.active {
-            background-color: #181828;
-            color: white;
-          }
-        </style>
-        <body>
-               
-            <div class="topnav">
-                <a href="https://trishan8.github.io/">Home</a>
-                <a href="https://trishan8.github.io/about/">About</a>
-                <a class="active" href="https://trishan8.github.io/My-Notes.html">Articles</a>
-                <a href="https://trishan8.github.io/posts/">Blogs</a>
-                <a href="https://trishan8.github.io/misc/">Mics</a>
-              </div>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #fff;
+    }
 
-            <h1 font-family="">
-                <center>
-                  Some Notes by Me
-                </center>
-            </h1>
-             
-            <center>
-               <em> “One should never try to prove anything that is not almost obvious.”</em> <br>
-               ― <b>Alexander Grothendieck</b>
-            </center>
+    body {
+      background: #000;
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+    }
 
-            <h2>
-                 Algebraic Geometry
-            </h2>
-            <p>
-                <li>
-                  <b>Intersection homology -</b> [<a href="./mynotes/Intersection-homology.pdf" style="color: rgb(23, 6, 75);">pdf</a>] This pdf contains the materials of my two talks of <a href="https://charanyaravi.github.io/Sem2-23-24/Sem2-23-24:IH:index.html" style="color: rgb(11, 10, 77);">Intersection homology</a> seminar at ISI, Bangalore.
-                </li> <br>
+    /* Sidebar */
+    nav {
+      width: 180px;
+      padding: 20px;
+      background: #000; /* same as page background */
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
 
-                <li>
-                    <b>Riemann Roch and Serre duality - </b> [<a href="./mynotes/Riemann-Roch.pdf" style="color: rgb(23, 6, 75);">pdf</a>] Here I have discussed about Riemann Roch theorem and it's application on Riemann surfaces including Moduli spaces. It was the contents for my talks of <a href="https://sanchayan-bhowal.github.io/miscellaneous/riemann/" style="color: rgb(11, 10, 77);">seminar on Riemann surfaces</a>.
-                </li> <br>
-            </p>
+    nav h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid lightgreen;
+      padding-bottom: 5px;
+    }
 
-            <h2>Algebraic Topology</h2>
-               
-            <p>
-               <li>
-                 <b>Tools in Homotopy theory and it's applications in computing stem-1, stem-2- </b> [<a href="./mynotes/htopy.pdf" style="color: rgb(23, 6, 75);"">Pdf</a>].
-               </li>
-               <li>
-                <b>On the relation of James space and Loop space of suspension </b> [<a href="./mynotes/Note1.pdf" style="color: rgb(23, 6, 75);"">Pdf</a>].
-              </li>
-                <li>
-                    <b>Applications of Cohomology operation in Homotopy theory - </b> [<a href="./mynotes/cohomoper.pdf" style="color: rgb(23, 6, 75);">pdf</a>, <a href="https://trishan8.github.io/talk_5.html" style="color: rgb(23, 6, 75);"">html</a>] This is my lecture notes of the talk delivered in the "<a href="https://mathclubisib.github.io/seminars/what_is/wi_spring_2024/" style="color: rgb(11, 10, 77);">What is...?</a>" seminar organized by Mathclub, ISI Bangalore. 
-                </li> <br>
+    nav ul {
+      list-style: none;
+    }
 
-                <li>
-                    <b>Cohomology and Poincaré Duality -</b> [<a href="./mynotes/poincareduality.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
-                </li><br>
+    nav ul li {
+      margin: 15px 0;
+    }
 
-                <li>
-                    <b>Some Fixed point theorems -</b> [<a href="./mynotes/fixedpoint.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
-                </li><br>
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
 
-                <li>
-                    <b>Acyclic Model theorem and equivalence of homology theories - </b> [<a href="./mynotes/homology.pdf" style="color: rgb(23, 6, 75);">pdf</a>] This is part of my VSRP 2023 report.
-                </li><br>
+    nav ul li a:hover {
+      color: lightgreen;
+    }
 
-                <li>
-                    <b>Künneth formula and Universal coefficient theorem - </b> [<a href="./mynotes/kunneth.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
-                </li>
-             
-                <h2>Analysis</h2>
+    /* Main content */
+    main {
+      margin-left: 200px; /* space for sidebar */
+      padding: 40px;
+      flex: 1;
+      scroll-behavior: smooth;
+      text-align: left;
+    }
+
+    /* Page title */
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      background: lightgreen;
+      transition: width 2s;
+    }
+
+    h1:hover::after {
+      width: 100%;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 2rem;
+      margin: 60px 0 20px 0;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      background: rgb(144, 202, 238);
+      transition: width 1.5s;
+    }
+
+    h2:hover::after {
+      width: 100%;
+    }
+
+       /* Sticky underline after hover */
+    h1.sticky-underline::after {
+      width: 100% !important;
+    }
+
+    .content {
+      font-size: 1.1rem;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav>
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#recent">Recent Works</a></li>
+      <li><a href="#notes">Articles and Notes</a></li>
+      <li><a href="#talks">Talks/Presentations</a></li>
+    </ul>
+    <h4><a href="https://trishan8.github.io/"; style="color: rgb(168, 230, 210);">Homepage</a></h2>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <h1>Research and Activities</h1>
+    <div class="content">
+     On this page, I’ll upload my research works and keep them updated. I’ll also share any notes I’ve written, and in addition, I’ll be adding my talks and presentations here.
+    </div>
+
+    <section id="recent">
+      <h2>Recent Works</h2>
+      <div class="content">
+         <ol>
+            <li>
+                Power Operations In Homology Of \(E_{\infty}\)-spaces- <a href="mynotes/Dyer-lash.pdf">PDF</a>.
+            </li>
+            <li>
+                (<a style="color: aquamarine;">Upcoming</a>) Braid Group action on \(D^b(\mathfrak{M}_{\eta})\)- <a href="mynotes/preprint.pdf">Summary</a>.
+            </li>
+            <li>
+                Revisiting Pontryagin's Proof of Stable Stems 1 and 2 <a href="https://arxiv.org/abs/2503.11211">PDF</a> [arXiv:2503.11211]
+            </li>
+         </ol>
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>Articles and Notes</h2>
+      <div class="content">
+       <ol>
+            
+             <li>
+                    Applications of Cohomology operation in Homotopy theory - [<a href="./mynotes/cohomoper.pdf";">PDF</a>, <a href="https://trishan8.github.io/talk_5.html" style="color: rgb(255, 255, 255);"">html</a>] This is my lecture notes of the talk delivered in the "<a href="https://mathclubisib.github.io/seminars/what_is/wi_spring_2024/" style="color: rgb(153, 222, 220);">What is...?</a>" seminar organized by Mathclub, ISI Bangalore. 
+                </li> 
                   
                 <li>
-                    <b>Hahn Banach Separation and Riesz representation theorem - </b>[<a href="./mynotes/functional.pdf" style="color: rgb(23, 6, 75);">pdf</a>] This is not pure Analysis but convex Geometry. These were used in the functional analysis course (5th semester 2023, fall). 
-                </li> <br>
-
-                <li>
-                    <b> The spaces of Lebesgue integrable functions L<sup>1</sup>(X) and L<sup>2</sup>(X) -</b> [<a href="mynotes/funcINF.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
-                </li><br>
-
-                <li>
-                    <b>Notes on Complex analysis - </b> [<a href="https://awnathan1893.github.io/ComplexAnalysis_Notes/pdfs/ComplexAnalysis_Notes.pdf" style="color: rgb(23, 6, 75);">pdf</a>] 
-                </li> <br>
-
-                <li>
-                    <b> Notes on analysis of several variables -</b> [<a href="./mynotes/functional.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
+                  <b>Intersection homology -</b> [<a href="./mynotes/Intersection-homology.pdf" style="color: rgb(255, 255, 255);">PDF</a>]. This pdf contains the materials of my two talks of <a href="https://charanyaravi.github.io/Sem2-23-24/Sem2-23-24:IH:index.html" style="color: rgb(152, 233, 224);">Intersection homology</a> seminar at ISI, Bangalore.
                 </li>
 
-                <h2>General</h2>
-                (These notes were written during my first year at ISI. These notes may contain some typos.)
+                <li>
+                    <b>Riemann Roch and Serre duality </b>-[<a href="./mynotes/Riemann-Roch.pdf";">pdf</a>] Here I have discussed about Riemann Roch theorem and it's application on Riemann surfaces including Moduli spaces. It was the contents for my talks of <a href="https://sanchayan-bhowal.github.io/miscellaneous/riemann/" style="color: rgb(169, 233, 222);">seminar on Riemann surfaces</a>.
+                </li>
+
+                  <li>
+                    Cohomology and Poincaré Duality - [<a href="./mynotes/poincareduality.pdf" style="color: rgb(255, 255, 255);">PDF</a>]
+                </li>
+
+                <li>
+                    Some Fixed point theorems - [<a href="./mynotes/fixedpoint.pdf";">PDF</a>]
+                </li>
+
+                <li>
+                Acyclic Model theorem and equivalence of homology theories -[<a href="./mynotes/homology.pdf";">PDF</a>] This is part of my VSRP 2023 report.
+                </li>
+
+                <li>
+                    Künneth formula and Universal coefficient theorem - [<a href="./mynotes/kunneth.pdf" style="color: rgb(255, 255, 255);">PDF</a>]
+                </li>
                 
-                <li style="list-style: none;">
- 
-                </li><br>
+                 <li>
+                    <b>Hahn Banach Separation and Riesz representation theorem - </b>[<a href="./mynotes/functional.pdf";">PDF</a>] This is not pure Analysis but convex Geometry. These were used in the functional analysis course (5th semester 2023, fall). 
+                </li>
 
-               <li>
-                <b>One point compactification with examples -</b> [<a href="./mynotes/oneptcpt.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
-               </li><br>
+                 <li>
+                    <b> The spaces of Lebesgue integrable functions \(L^1\) and \(L^2\) -</b> [<a href="mynotes/funcINF.pdf" style="color: rgb(255, 255, 255);">PDF</a>]
+                </li>
 
-               <li>
-                <b>Ordinal numbers and Cardinal numbers -</b> [<a href="./mynotes/ordinalnumber.pdf" style="color: rgb(23, 6, 75);">pdf</a>]
+                <li>
+                    <b>Notes on Complex analysis - </b> [<a href="https://awnathan1893.github.io/ComplexAnalysis_Notes/pdfs/ComplexAnalysis_Notes.pdf" style="color: rgb(255, 255, 255);">PDF</a>] 
+                </li> 
+
+                <li>
+                    <b> Notes on analysis of several variables -</b> [<a href="./mynotes/functional.pdf" style="color: rgb(255, 255, 255);">PDF</a>]
+                </li>
+
+                <li>
+                <b>One point compactification with examples -</b> [<a href="./mynotes/oneptcpt.pdf" style="color: rgb(255, 255, 255);">PDF</a>]
                </li>
 
                <li>
-                [<a href="./mynotes/PCMI.pdf" style="color: rgb(23, 6, 75);">Click here</a>]
+                <b>Ordinal numbers and Cardinal numbers -</b> [<a href="./mynotes/ordinalnumber.pdf" style="color: rgb(255, 255, 255);">PDF</a>]
                </li>
-            </p>
-             
-        </body>
-          
 
+
+       </ol>
+      </div>
+    </section>
+
+
+    <section id="talks">
+      <h2>Talks / Presentations</h2>
+      <div class="content">
+         <ol>
+            <li>
+                (2025) On \(E_{\infty}\)-algebras and Power operations on it - Midsem Presentation, ISIK.
+            </li>
+
+            <li> 
+                (2025) Tentative Braid Group action on \(D^b(\mathfrak{M}_{\eta})\)-  ANU, Canberra.
+            </li>
+
+            <li>
+                (2025) Tangled in Three, Free in Four [<a href="https://youtu.be/2pAunt23dh8?si=P_pcX6xYsiljXjmX" style="color: rgb(182, 238, 219);">Video</a>] Limit 2025, ISI Bangalore. 
+            </li>
+            
+            <li>
+                (2024) On Equivariant Stable Homotopy group of Sphere [<a href="mynotes/PCMI.pdf" style="color:rgb(236, 239, 238)">Slides</a>] Park City, PCMI(IAS) 2024
+            </li>
+                
+            <li> 
+                (2024) What is cohomology [<a href="https://youtu.be/Mg02nUacFz0?si=oDtbcwFYsAgLcDJR" style="color: rgb(182, 238, 219);">Video</a>] 'What is ...?' seminar 2024,ISI Bangalore
+            </li>
+
+            <li>
+                (2024) Intersection Homology and It's Properties - Intersection Homology seminar, ISI Bangalore, 2024.
+            </li>
+
+            <li>
+                (2023) Jordan-Brouwer Separation theorem - VSRP,2023 Presentation, TIFR(Mumbai), Online.
+            </li>
+   
+         </ol>
+      </div>
+    </section>
+  </main>
+
+
+    <!-- JavaScript to make underline stay after hover -->
+  <script>
+    // Apply sticky underline to headings on hover
+    const headings = document.querySelectorAll("h1, h2");
+    headings.forEach(h => {
+      h.addEventListener("mouseover", () => {
+        h.classList.add("sticky-underline");
+      });
+    });
+  </script>
+
+  <style>
+  li {
+    margin-bottom: 10px; /* adjust the gap */
+  }
+</style>
+
+</body>
 </html>

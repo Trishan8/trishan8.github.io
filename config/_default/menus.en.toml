@@ -26,7 +26,7 @@
  weight = 100
 
 [[main]]
- name = "Articles"
+ name = "Activities"
  url = "https://trishan8.github.io/My-Notes.html"
  weight = 120
 
