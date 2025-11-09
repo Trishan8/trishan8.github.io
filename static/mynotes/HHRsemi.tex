@@ -1,0 +1,724 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath, amssymb, amsthm, geometry, enumitem, hyperref, graphicx}
+\geometry{margin=1in}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{tikz,tikz-cd}
+\usepackage{cite}
+\usepackage{physics}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue
+}
+
+\setstretch{1.2}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\title{\textbf{Topology Seminar: Kervaire Invariant One}}
+\author{Notes by Trishan Mondal}
+\date{}
+
+% ---------------- Theorem Environments ----------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+\noindent These notes are prepared as part of a seminar series on the Hill–Hopkins–Ravenel solution to the Kervaire invariant one problem, a central result in modern algebraic topology. 
+The first lecture provides historical context and foundational developments—from Pontryagin’s framed cobordism to the Kervaire–Milnor classification of exotic spheres—leading to the formulation of the Kervaire invariant problem. Second lecture onwards we develop the theory that is necessary for understanding the tools used in the HHR proof. 
+The exposition follows standard references aiming for own conceptual clarity.
+\end{abstract}
+\tableofcontents
+
+
+\vspace{0.5cm}
+
+\noindent \textcolor{gray}{The notes is still incomplete. It is expected to be completed by the end of 2025.}
+
+\newpage
+
+\section{Lecture 1: Introduction} \newcommand{\ts}[1]{\textbf{\textsf{#1}}}
+
+\begin{center}
+    \Large (Speaker: \textbf{Samik Basu})
+\end{center}
+
+\noindent The goal of this seminar is to understand some techniques used in the paper of Hill–Hopkins–Ravenel (HHR) \cite{HHR} to solve a longstanding problem in algebraic topology related to the Kervaire invariant one problem.
+
+\begin{definition}
+    \ts{Stably Framed Manifolds.} A manifold $M$ is called \emph{stably framed} if $TM \oplus k\varepsilon$ is framed for some $k \ge 0$.  
+For example, $S^n$ is stably framed, while projective spaces may not be stably framed for every dimension.
+\end{definition}
+
+\noindent $\bullet$ Pontryagin \cite{Pontryagin1938} built a relation between framed cobordism classes of stably framed manifolds and homotopy classes of maps between certain manifolds. In a later paper, Pontryagin computed $\pi^S_1 \simeq \mathbb{Z}/2\mathbb{Z}$ using differential topology and attempted to compute $\pi^S_2$ using similar techniques. There, he defined a map
+\[
+\varphi : H^1(K; \mathbb{Z}/2) \longrightarrow \mathbb{Z}/2,
+\]
+where $K$ is a compact 2-dimensional manifold. He showed that the above map is a group homomorphism, which turned out not to be true. The error term is related to the \emph{Arf invariant}, later generalized to define the \emph{Kervaire invariant}.
+
+\begin{definition} 
+    
+   (\ts{Kervaire Invariant}) If $M$ is a $(2k)$-connected $(4k + 2)$-dimensional manifold, then one can define
+\[
+\phi : H^{2k+1}(M; \mathbb{Z}_2) \to \mathbb{Z}_2
+\]
+satisfying the quadratic property:
+\[
+\phi(X + Y) = \phi(X) + \phi(Y) + \langle X \smile Y, [M] \rangle.
+\]
+Using a symplectic basis $\{x_i, y_i\}$ of the above cohomology, we define the Kervaire invariant as
+\[
+\Phi(M) = \sum_i \phi(x_i)\phi(y_i).
+\]
+\end{definition}
+
+
+\noindent This invariant is related to the existence of smooth structures on $M$ \cite{Kervaire1960}.
+
+\begin{theorem} \label{thm: HHR}
+\ts{Hill–Hopkins–Ravenel: Existence of Kervaire Invariant One.} If $M$ is a smoothly framed manifold of Kervaire invariant one, then
+\[
+\dim(M) \in \{2^n - 2 : n = 2, \dots, 7\}.
+\]
+This is the celebrated \emph{Kervaire Invariant One Theorem} proved by Hill, Hopkins, and Ravenel \cite{HHR}.
+\end{theorem}
+
+
+
+\noindent $\bullet$ Back to the history.Using the Thom–Pontryagin construction, we obtain the following isomorphism: (Pontryagin 1938)
+\[
+\{\text{stably framed $k$-manifolds}\}/\text{framed cobordism} \;\;\simeq\;\; \pi_k^S(S).
+\]
+
+\noindent Before going into more discussion of Kervaire invariant one problem, we would like to look at \textbf{Exotic sphere} business. Shortly, exotic sphere are the topological manifolds homeomorphic to spheres but not diffeomorphic to them. 
+
+\subsection*{Some Past Developments}
+
+\begin{itemize}
+  \item Milnor (1956): Examples of exotic spheres in dimension 7 \cite{Milnor1956}.
+  \item Smale (1961): $h$-cobordism implies diffeomorphism for $\dim \ge 5$ \cite{Smale1961}.
+  \item Smale, Zeeman, Stallings: If $M^n \simeq_{\text{htop}} S^n$, then $M^n$ is homeomorphic to $S^n$.
+\end{itemize}
+
+\noindent In a later paper, it was proved that there exists a 10-dimensional manifold that does not admit any smooth structure. This is known as the \emph{Kervaire handcuff} \cite{Kervaire1960}. The construction as follows:
+
+\begin{itemize}
+    \item[] Let $TS^5$ be the tangent bundle of the 5-sphere. The disk bundle of this vector bundle is trivial on both hemispheres. Denote it by $D^5 \times D^5$, and call it $X$.  
+Attach two copies of $TS^5$ along $X$ via a twisting map. Call the resulting space $N$. Then $\partial N \cong S^9$. Define $M = N/\partial N$. This is the required manifold. 
+\end{itemize}
+
+\noindent In the same paper the following theorem was proved: 
+
+\begin{theorem}
+    \cite{Kervaire1960} If the 10-dimensional manifold $X$ admits a smooth structure, then $$\Phi(X) = 1$$
+\end{theorem}
+
+\noindent The Kervaire invariant captures when a manifold can be surgically converted into a smooth sphere. Thus, it became an important question to ask: in which dimensions can we have Kervaire invariant one?
+
+\noindent \textit{Exotic Spheres.} Let $\Theta_n$ denote the group of $n$-dimensional exotic spheres. Then
+\[
+\Theta_n = \{\text{$n$-manifolds}\}/h\text{-cobordism}.
+\]
+
+\begin{theorem}
+    \ts{Kervaire and Milnor} \cite{KervaireMilnor1963} showed that the following map is injective:
+\[
+\Theta_n / bP_{n+1} \to \pi^S_n / \operatorname{Im}(J),
+\]
+where $bP_{n+1}$ is the subgroup of exotic spheres that bound parallelizable manifolds.
+\end{theorem}
+
+\subsection*{Some Developments on this problem}
+
+\begin{itemize}
+    \item[(i)] Brown and Peterson(1965,66) \cite{BrownPeterson1966} showed that the Kervaire invariant is zero in dimensions $8k + 2$.
+    \item[(ii)] Browder (1969) \cite{Browder1969} proved that
+\[
+\Phi(M) = 1 \implies \dim(M) = 2^j - 2.
+\]
+In this case, such a manifold exists if and only if there exists
+\[
+\theta_j \in \pi_{2^j - 2}^S
+\]
+detected by $h_j^2$ in the $E_2$-page of the Adams spectral sequence.
+\item[(iii)] 
+Barratt, Mahowald, Tangora, and Jones proved that there exist $\theta_j$ for $j \le 5$, and for $j = 6$ it is conjectured to exist \cite{BarrattMahowaldTangora}.
+\end{itemize}
+
+
+
+
+
+
+\subsection*{Strategy of HHR}
+
+To approach the theorem \ref{thm: HHR}, one finds a suitable cohomology theory $E$ such that:
+\begin{itemize}
+  \item \textbf{Detection:} If $\theta_j \ne 0$, then $E_*(\theta_j) \ne 0$.
+  \item \textbf{Periodicity:} $E$ is periodic with period 256.
+  \item \textbf{Gap theorem:} For $-4 < i < 0$, $\pi_i(E) = 0$.
+\end{itemize}
+
+
+\noindent These together shows that $\theta_7$ is trivial and $\theta_j$ for $j\geq 0$ is trivial which is the main work of Hill–Hopkins–Ravenel.
+
+
+\section{Lecture 2,3: Equivariant Stable Homotopy Theory}
+
+   
+\begin{center}
+    \Large (Speaker: \textbf{Vanny Doem})
+\end{center}
+
+\noindent In this lecture, we discuss Chapter 2 of HHR \cite{HHR}. The scribe is familiar with the material and has taken brief notes.
+
+\vspace{0.2cm}
+
+\noindent \ts{Notations.} For the rest of the seminar, we use the following notations.\newcommand{\T}{\mathcal{T}} \newcommand{\W}{\mathcal{W}}
+
+\begin{itemize}
+    \item[-] $\T^G$  is the category of based $G$-spaces. 
+\item[-] $\T_G$ is the same category but with the enrichment over $\T^G$. 
+\item[-] Weak equivalences in $\T_G$ are the maps $f:X\to Y$ , such that $f^H_{\ast}:\pi_k^H(X)\to \pi_k^H(Y)$ is isomorphism for all $k\in \mathbb{N}$ and $H \leq G$. 
+  
+\end{itemize}
+\noindent If we call the collection of weak equivalence $\W$, the pair $(\T^G,\W)$ is a homotopical model category. The \textit{Equivariant homotopy} is the homotopy category of $(\T^G,\W)$. In other words it is  $\text{ho} \T^G := \T^G[\W^{-1}]$. It is \emph{universal} in the sense that if we have a functor $\T\to \mathcal{D}$ that takes weak equivalences to isomorphisms, then it factors through the following diagram.
+\[
+\begin{tikzcd}
+\T^G \arrow[dr] \arrow[r] & \operatorname{ho}(\T^G) \arrow[d, dashed] \\
+ & \mathcal{D}.
+\end{tikzcd}
+\]
+
+
+\noindent Just like in the non-equivariant case, we can construct the equivariant Spanier–Whitehead category $\mathsf{SW}^G$, where:
+\begin{itemize}
+  \item[-] Objects are equivariant CW complexes.
+  \item[-] Morphisms are taken up to stability.
+\end{itemize}
+
+\begin{remark}
+    This category has dual objects but is neither complete nor cocomplete, making it difficult to view as a homotopy category. Therefore, it is not a good model for equivariant stable homotopy theory.
+\end{remark}
+
+\noindent \ts{Objective.} We want a complete and cocomplete symmetric monoidal category $\mathsf{Sp}^G$ with a suitable class of weak equivalences $\mathcal{W}$ such that $(\mathsf{Sp}^G, \mathcal{W})$ is a model category and we have a fully faithful embedding
+\[
+\mathsf{SW}^G \hookrightarrow \operatorname{ho}\mathsf{Sp}^G.
+\]
+
+\noindent Also, we require $\mathsf{Sp}^G$ to contain the following data:
+
+
+\paragraph{($\textbf{Sp}_1$)} The functors $\Sigma^\infty$ and $\Omega^\infty$ induce adjoint functors:
+\[
+L\Sigma^\infty : \operatorname{ho}\mathsf{T}^G \;\rightleftarrows\; \operatorname{ho}\mathsf{Sp}^G : R\Omega^\infty.
+\]
+
+\paragraph{($\textbf{Sp}_2$)}The symmetric monoidal structure on $\mathsf{Sp}^G$ induces a closed symmetric monoidal structure on $\operatorname{ho}\mathsf{Sp}^G$, and $L\Sigma^\infty$ is symmetric monoidal.
+
+\paragraph{($\textbf{Sp}_3$)} The functor $L\Sigma^\infty$ extends to a fully faithful, symmetric monoidal embedding of $\mathsf{SW}^G$ into $\operatorname{ho}\mathsf{Sp}^G$.
+
+\paragraph{($\textbf{Sp}_4$)} The objects $S^V$ are invertible in $\operatorname{ho}\mathsf{Sp}^G$ under the smash product. Thus, the embedding of $\mathsf{SW}^G$ extends to an embedding of the extended Spanier–Whitehead category.
+
+\paragraph{($\textbf{Sp}_5$)} Arbitrary coproducts (denoted $\vee$) exist in $\operatorname{ho}\mathsf{Sp}^G$ and can be computed by wedges.  
+If $\{X_\alpha\}$ is a collection of objects of $\mathsf{Sp}^G$ and $K$ is a finite $G$-CW complex, then
+\[
+\bigoplus_\alpha \operatorname{ho}\mathsf{Sp}^G(K, X_\alpha)
+\longrightarrow \operatorname{ho}\mathsf{Sp}^G(K, \bigvee_\alpha X_\alpha)
+\]
+is an isomorphism.
+
+\paragraph{($\textbf{Sp}_6$)} Up to weak equivalence, every object $X$ is presentable in $\mathsf{S}^G$ as a homotopy colimit
+\[
+\cdots \to S^{-V_n} \wedge X_{V_n} \to S^{-V_{n+1}} \wedge X_{V_{n+1}} \to \cdots
+\]
+in which $\{V_n\}$ is a fixed increasing sequence of representations eventually containing every finite-dimensional representation of $G$, and each $X_{V_n}$ is weakly equivalent to an object of the form $\Sigma^\infty K_{V_n}$, with $K_{V_n}$ a $G$-CW complex.
+
+\bigskip
+\noindent The construction of such $\mathsf{Sp}^G$ will be discussed in the next lecture (lecture -3).
+
+\vspace{1em}
+
+\noindent I am skipping most part of Lecture-3. The construction is general one. One can work with whichever spectra they are familiar with just make sure that they satisfy $\textbf{Sp}_1\to \textbf{Sp}_6$. One can look at \cite{MandellMaySchwedeShipley2001}, \cite{HHR} for example. 
+
+\subsection*{Geometric Fixed Points.}  Define the universal total-space for proper subgroups $E\mathcal{F}$ for the family $\mathcal{F}$ of proper subgroups (or the family of all proper subgroups if $G$ finite). Then we have the cofibre sequence known as \textbf{isotropy separation sequence,} \[ E\mathcal{F}_{+} \xrightarrow{} S^0 \xrightarrow{} \widetilde{E\mathcal{F}}, \]The \emph{geometric fixed points} functor $\Phi^G$ is computed by smashing with $\widetilde{E\mathcal{F}}$ and then taking $G$-fixed points: \[ \Phi^G(X) \simeq (\widetilde{E\mathcal{F}}\wedge X)^G. \] 
+
+\noindent $\Phi^G$ is a functor $\mathbf{Sp}^G \to \mathbf{Sp}$ satisfying the following properties,
+\begin{enumerate} \item $\Phi^G$ sends weak equivalences to weak equivalences. \item $\Phi^G(S^0)\cong S^0$ (for the trivial action). 
+    \item Interaction with wedge: $\Phi^G \qty(\bigvee_j X_j)\simeq \bigvee_j\Phi^G(X_i)$.
+    \item Interaction with smash: $\Phi^G \qty(\bigwedge_j X_j)\simeq \bigwedge_j\Phi^G(X_i)$ \emph{(Added / inferred: this is true under reasonable cofibrancy assumptions; see e.g. Mandell--May.)} 
+    \item For a $G$-CW complex $A$, $\Phi^G(A) = A^G$ (follows from Tom-Dieck splitting)
+    \item For a $G$-CW complex $A$, $\Phi^G(A\wedge S^{-V}) = A^G\wedge S^{-V^{G}}$
+\end{enumerate}
+
+%-------
+
+\section{Lecture 4,5: Macky Functors, Homotopy, Homology} 
+
+
+
+
+\noindent Let $G$ be a finite group.  A \emph{Mackey functor} $M$ for $G$ is an additive functor on the category of finite $G$-sets with the usual restriction and transfer structure (equivalently a pair of functors with Mackey relations).  We usually write $M(B)$ for the value of $M$ on a finite $G$-set $B$; for an orbit $G/H$ one writes $M(G/H)$ and often abbreviates $M(H)=M(G/H)$. A brief definition of Mackey functor would be: The Mackey functor $M$ is a additive functor $$M : \text{Burn}^{op}_{G} \to \textbf{Ab}$$ All the complicated information about Mackey functors (push-pull etc.) lies inside the Burnside category $\text{Burn}_G$. We define two important examples below: 
+\begin{itemize}
+  \item[(i)] The \emph{Burnside ring Mackey functor.} $A$ is $\pi_0^G(S^0)$: it is the free Mackey functor on one generator. Concretely $A(B)$ is the group completion of isomorphism classes of finite $G$-sets over $B$ (disjoint union giving addition).  
+  \item[(ii)] Every Mackey functor $M$ arises as $\pi_0^G(HM)$ for an equivariant Eilenberg--Mac\,Lane $G$-spectrum $HM$, with $\pi_n HM=\begin{cases} M & n=0\\ 0 & n\neq0\end{cases}$. 
+\end{itemize}
+
+
+\begin{definition}[\ts{Equivariant homology/cohomology with Mackey coefficients}]
+For a $G$-spectrum $X$ and a Mackey functor $M$ define
+\[
+H_k^G(X;M):=\pi_k^G(HM\wedge X),\qquad H^k_G(X;M):=[X,\Sigma^k HM]^G.
+\]
+For a based $G$-space $Y$ set
+\[
+H^G_n(Y;M):=H^G_n(\Sigma^\infty Y;M),\qquad H_G^n(Y;M):=H_G^n(\Sigma^\infty Y;M).
+\]
+\end{definition} \noindent These groups are RO$(G)$--graded when one works with suspensions by representations; HHR emphasize the RO$(G)$-graded viewpoint when discussing classes such as orientation classes and the elements denoted $u_V,a_V$.
+
+\subsection*{The constant Mackey functor: $\underline{\mathbb{Z}}$} \newcommand{\zz}{\underline{\mathbb{Z}}}
+The constant Mackey functor $\zz$ is represented by the abelian group $\mathbb{Z}$ with trivial $G$-action on finite $G$-sets. For a finite $G$-set $B$ one has
+\[
+\zz(B)=\operatorname{Hom}_G(B,\mathbb{Z})\cong \operatorname{Hom}(B/G,\mathbb{Z}),
+\]
+restriction maps are given by precomposition, and transfers are given by summing over fibers (in particular the transfer along $G/K\to G/H$ is multiplication by $[H:K]$).
+
+\subsection*{Permutation Mackey functors $\mathbb{Z}\{S\}$}
+\noindent If $S$ is a (finite) $G$-set write $\mathbb{Z}\{S\}$ for the free abelian group on $S$ with the permutation action. The \emph{permutation Mackey functor} associated to $S$ is
+\[
+\mathbb{Z}\{S\}(B)=\operatorname{Hom}_G(B,\mathbb{Z}\{S\}),
+\]
+with restriction and transfer as above. HHR show the permutation Mackey functors are realized as $\pi_0(H\mathbb{Z}\wedge S_+)$ and record useful exactness properties (equalizer descriptions, functoriality under surjections of $G$-sets, and identification of values on orbits).
+
+\subsection*{Equivariant cellular chains and the cellular model}
+
+
+If $X$ is a $G$-CW complex and $X^{(n)}$ its $n$-skeleton, write $X_n$ for the discrete $G$-set of $n$-cells so that
+\[
+X^{(n)}/X^{(n-1)}\simeq X_{n+}\wedge S^n.
+\]
+Then the cellular chain Mackey functor complexes are
+\[
+C^{\mathrm{cell}}_n(X;M)=\pi_n^G(HM\wedge X^{(n)}/X^{(n-1)})=\pi_0^G(HM\wedge X_{n+})=M(X_n),
+\]
+and
+\[
+C^{n}_{\mathrm{cell}}(X;M)=[X^{(n)}/X^{(n-1)},\Sigma^n HM]^G=[\Sigma^\infty X_{n+},HM]^G.
+\]
+Thus equivariant (co)homology with coefficients in $M$ is computed by the homology of these Mackey-functor-valued chain complexes; in particular the chains split over the contributions of each $G$-orbit of cells and hence reduce to understanding $M$ on finite $G$-sets (orbits).
+
+\vspace{1em}
+
+\noindent HHR introduce two kinds of ubiquitous classes in the RO$(G)$--graded homotopy of $H\zz$ (and other equivariant spectra).
+
+\begin{definition}[Class $a_V$]
+For a representation $V$ there is a canonical map (coming from the inclusion of fixed points)
+\[
+a_V\colon S^0\to S^V,
+\]
+or equivalently (after applying $H\mathbb{Z}\wedge -$) an element in
+\[
+a_V\in \pi_{-V}^G(H\mathbb{Z}).
+\]
+If $V$ contains a trivial summand then $a_V=0$. The classes are multiplicative: $a_{V\oplus W}=a_V a_W$.
+\end{definition}
+
+\begin{definition}[Orientation class $u_V$]
+If $V$ is an \emph{oriented} $d$-dimensional representation there is a preferred generator of
+\[
+H^G_d(S^V;\zz)\cong\pi_d^G(H\zz\wedge S^V),
+\]
+and the corresponding homotopy class under the suspension isomorphism is written
+\[
+u_V\in \pi^G_{d-V}(H\mathbb\zz).
+\]
+These classes are multiplicative with respect to direct sum of oriented representations.
+\end{definition}
+
+\noindent HHR use these to describe cellular boundary maps and to index certain permanent cycles in the slice spectral sequence. The interplay between $a_V$ and $u_V$ is central in many concrete computations (see the examples below).
+
+\subsection*{Example 2.6 (self-dual finite $G$-sets)}
+A finite $G$-set $B$ is self-dual in the (enlarged) equivariant Spanier--Whitehead category; concretely they use the self-duality of finite $G$-sets to identify maps out of $B_+$ with maps into the suspension spectrum, and this appears when identifying permutation Mackey functors with $\pi_0(H\mathbb{Z}\wedge S_+)$ for finite $S$.
+
+\subsection*{Example 3.4 (regular representation sphere)}
+Let $\rho_G$ denote the real regular representation of $G$ and $\rho_G-1$ the reduced regular representation. HHR compute the homology groups
+\[
+H^*_G(S^{\rho_G-1};M)
+\]
+for a Mackey functor $M$ by reducing to the values of $M$ on appropriate finite $G$-sets and using the cellular decomposition of $S^{\rho_G-1}$: the unit sphere in the regular representation has an equivariant cell decomposition with cells indexed by orbits of subsets, so the cellular chain complex can be written explicitly in terms of permutation Mackey functors. This computation is the foundation for several vanishing/gap statements used later.
+
+\subsection*{Example 3.8 (cellular chain examples -- permutation-type complexes)}
+HHR sketch the cellular chains for representation spheres and certain orbits; Example 3.8 in the paper constructs explicit finite-length chain complexes of permutation Mackey functors (free abelian groups on the orbit sets) whose homology gives the desired equivariant homology. The boundary maps in these complexes are described concretely using transfers (summation over fibers) and restrictions (precomposition).
+
+\subsection*{Example 3.10 (preferred generator for oriented $V$)}
+When $V$ is oriented HHR show explicitly how to choose the preferred generator of $H^G_d(S^V;\zz)$ (used to define $u_V$). More precisely, an orientation of $V$ determines an equivariant isomorphism of homology groups and hence a distinguished class in the RO$(G)$-graded homotopy of $H\zz$.
+
+\subsection*{Examples 3.15--3.17 (suspension limits and cyclic groups)}
+Example 3.15 describes the behavior of RO$(G)$-graded homotopy under iterated suspensions and colimits: if $S^{nV}\wedge X \to S^{(n+1)V}\wedge X \to \cdots$ the induced maps on RO$(G)$-graded homotopy correspond to multiplication by appropriate $a_{V}$ powers and shift indices; this explains how certain classes in infinite limits arise from classes in finite skeleta.
+
+\begin{remark}
+ Example 3.16 / 3.17 specialize to $G=C_{2^n}$ with $\sigma$ the sign (1-dim) representation. HHR compute the cellular homology of spheres $S^{d\sigma}$ with constant coefficients and identify generators and differentials; passing to the limit $d\to\infty$ produces classes in the homotopy of the telescope (used later to identify permanent cycles and ring-structures).
+
+\end{remark}
+
+\begin{proposition}[\ts{A gap in homology}; \cite{HHR} Proposition 3.20]\label{prop:gap}
+Let \(G\) be any nontrivial finite group and \(n\ge 0\) an integer.  Except in the unique exceptional case \(G=C_3\) with \(n=1\) and \(i=3\), the groups
+\[
+H^G_i(S^{\,n\rho_G};\zz)
+\]
+are zero for \(0<i<4\).  In the exceptional case one has
+\[
+H^G_3(S^{\rho_{C_3}};\zz)\cong\mathbb{Z}.
+\]
+(Here \(S^{n\rho_G}\) denotes the one-point compactification of the \(n\)-fold direct sum of the real regular representation.)
+\end{proposition}
+
+\begin{proof}
+We follow the elementary homological argument in HHR.
+
+\medskip\noindent\textbf{Step 1: reduction to the sphere \(S^{n(\rho_G-1)}\).}
+Because suspension by a trivial representation shifts degrees in the usual way, one has the (RO(G)-graded) suspension isomorphism
+\[
+H^G_i(S^{n\rho_G};\zz) \cong H^G_{\,i-n}(S^{\,n(\rho_G-1)};\zz).
+\]
+Thus it suffices to establish vanishing for the groups \(H^G_{\,i-n}(S^{\,n(\rho_G-1)};\mathbb{Z})\) in the indicated range.  Equivalently we will show \(H^G_j(S^{\,n(\rho_G-1)};\mathbb{Z})=0\) for appropriate \(j\).
+
+\medskip\noindent\textbf{Step 2: connectivity of orbit spaces and immediate vanishing.}
+Consider the unit sphere \(S(\rho_G-1)\) in the reduced regular representation \(\rho_G-1\).  The unreduced suspension \(S^{\rho_G-1}\) is the suspension of \(S(\rho_G-1)\), and its orbit space \(S^{\rho_G-1}/G\) is therefore the suspension of the orbit space \(S(\rho_G-1)/G\).  For any nontrivial finite \(G\) one checks that \(S(\rho_G-1)\) is connected (indeed if \(|G|>2\) the sphere is connected and if \(G=C_2\) then \(S(\rho_G-1)\cong G\) and the orbit space is still connected).  Hence \(S^{\rho_G-1}/G\) is simply connected.  By Example 3.19 in \ref{thm: HHR} this yields the vanishing of certain low-degree equivariant homotopy groups of $H\zz$ and therefore
+\[
+H^G_0(S^{\,n(\rho_G-1)};\zz) = H^G_1(S^{\,n(\rho_G-1)};\zz) = 0
+\]
+for \(n>0\).  Converting back to the original shifted indices, this shows \(H^G_i(S^{\,n\rho_G};\zz)=0\) for all \(i\le n+1\).  In particular, whenever \(n+1\ge 3\) (i.e.\ \(n\ge2\)) the desired vanishing for \(0<i<4\) follows immediately.  This deals with all cases except possibly when \(n=0\) or \(n=1\).
+\medskip
+
+\noindent\textbf{Step 3: remaining case \(n=1\).}
+We are left to handle the case \(n=1\); by the reduction above it suffices to analyze
+\[
+H^G_i(S^{\rho_G};\zz)\quad\text{for }0<i<4,
+\]
+equivalently \(H^{G}_{\,i-1}(S^{\rho_G-1};\mathbb{Z})\) (by the same suspension shift).  In this range the only possibly nonzero group to check is the middle degree
+\[
+H^G_2(S^{\rho_G-1};\zz) \cong H^2(S^{\rho_G-1}/G;\mathbb{Z}),
+\]
+because \(S^{\rho_G-1}/G\) is simply connected and universal coefficient arguments eliminate the lower degrees as above.  Thus it is enough to show \(H^2(S^{\rho_G-1}/G;\mathbb{Z})=0\) except in the stated exceptional case.
+
+\medskip\noindent\textbf{Step 4: passing to rational coefficients.}
+Since \(S^{\rho_G-1}/G\) is a finite CW complex (orbit of a finite \(G\)-CW), the integral cohomology in degree \(2\) is finitely generated.  The universal coefficients short exact sequence gives an inclusion
+\[
+H^2(S^{\rho_G-1}/G;\mathbb{Z}) \hookrightarrow H^2(S^{\rho_G-1}/G;\mathbb{Q})
+\]
+on torsion-free summands, so it suffices to show the rational group \(H^2(S^{\rho_G-1}/G;\mathbb{Q})\) vanishes except in the exceptional case.  (If the rational cohomology vanishes, the integral group must be torsion; but the connectivity arguments already exclude torsion in this range except possibly the special case.)  
+
+\medskip\noindent\textbf{Step 5: \(G\)-invariants and the exceptional case.}
+Because \(G\) is finite,
+\[
+H^2(S^{\rho_G-1}/G;\mathbb{Q}) \cong H^2(S^{\rho_G-1};\mathbb{Q})^G,
+\]
+the \(G\)-invariant part of the ordinary rational cohomology of the sphere \(S^{\rho_G-1}\).  But \(S^{\rho_G-1}\) is a (real) sphere of dimension \(\dim(\rho_G-1)-1 = |G|-2\).  For dimension reasons, ordinary rational cohomology \(H^2(S^{\rho_G-1};\mathbb{Q})\) is nonzero only when \(|G|-2 = 2\), i.e.\ only when \(|G|=4\), or if the sphere has small dimension leading to exceptional combinatorics.  HHR check directly that the only time a nontrivial \(G\)-invariant rational class in degree \(2\) appears is when \(|G|=3\) (i.e. \(G=C_3\)), in which case one finds \(H^2(S^{\rho_{C_3}-1};\mathbb{Q})\cong\mathbb{Q}\).  (Equivalently, the reduced sphere \(S(\rho_{C_3}-1)\) in that case has the necessary 2-dimensional rational cohomology fixed by the \(C_3\)-action.)  Therefore for all nontrivial finite \(G\) with \(|G|\ne 3\) the group \(H^2(S^{\rho_G-1}/G;\mathbb{Q})\) vanishes.  This yields the desired integral vanishing in degree two as well (since groups are finitely generated), completing the proof of vanishing for \(n=1\) except when \(G=C_3\).
+
+\medskip\noindent\textbf{Step 6: the exceptional case \(G=C_3\).}
+When \(G=C_3\) HHR verify that \(H^2(S^{\rho_{C_3}-1}/C_3;\mathbb{Q})\cong\mathbb{Q}\), and from finite generation and integral considerations one deduces the integral cohomology group in degree \(2\) is \(\mathbb{Z}\); shifting indices back to homology gives
+\[
+H^G_3(S^{\rho_{C_3}};\zz)\cong\mathbb{Z},
+\]
+as claimed. 
+
+\medskip\noindent This completes the verification that \(H^G_i(S^{n\rho_G};\zz)=0\) for \(0<i<4\) except in the stated exceptional case, proving Proposition \ref{prop:gap}.
+\end{proof}
+
+\medskip 
+
+\noindent For integer grading we use $\ast$ and for $\text{RO}(G)$-grading we use the symbol $\star$. For a group $G$, $\mathcal{P}$ defines the family of all proper subgroups of $G$. There is a result proved in \cite{HHR}: for $G=C_2^n$ if $\sigma$ is the sign representation and $a_{\sigma}$ is corresponding Euler class, we have $\widetilde{E \mathcal{P}} = S^{\infty \sigma}$ and thus $$\pi_{\star}^{G}(X \wedge \widetilde{E \mathcal{P}})= \pi_{\star}(X)[a_{\sigma}^{-1}]$$ Furthermore if $G=C_2$, $$\pi_*(\Phi^G(X))= \pi_*^{G}(X)[a_{\sigma}^{-1}]$$
+
+\section{Lecture 5,6 : The Slice Filtraions}
+
+
+\begin{center}
+    \Large (Speaker: \textbf{Risav Baradia})
+\end{center}
+
+
+
+%-----------------------
+\section{Lecture 7: The Complex cobordism}
+
+\begin{center}
+    \Large (Speaker: \textbf{Shantabrata Saha})
+\end{center}
+
+\noindent In this talk we will be talking about complex oriented cohomology theory. Before that, let us introduce the spectra $MU$. Firstly, consider $BU(n)$ to the the cassifying space for complex $n$-plane bundle. Let, $\gamma_n$ be the canonical $n$-plnae bundle over it often defined as $EU(n) \times_{U(n)} \mathbb{C}^n$. We define $MU(n)$ to be the Thom space of $\gamma_n$. More precisely $$MU(n)= EU(n)^{+}\wedge_{U(n)}\widehat{\mathbb{C}^n}$$ There is a map $BU(n) \to BU(n+1)$ that sends a bundle $\xi$ to $\xi\oplus \epsilon$, $\epsilon$ is the trivial line bundle. Thus in Thom space we have a map $$S^{\mathbb{C}} \wedge MU(n) \to MU(n+1)\, (\star)$$ If we consider the collection $MU = \qty{MU(n)}_{n \geq 1}$ apparently this is not a spectra  as there is no structure map between $MU(n)$ to $MU(n+1)$. Perhaps what we do is the following: consider $\widetilde{MU}_n = \text{map}(S^n, MU(n))$. The collection $\widetilde{MU} = \qty{\widetilde{MU}_n}$ forms a spectra (Exercise, or follow the paper of S.Schwede on \textit{Symmetric spectra}). What one can note is that the stable homotopy groups of $\widetilde{MU}$ is given by $$\pi_k(\widetilde{MU})=\text{colim } \pi_{k+2n}(MU(n))$$ here the colimit is taken from the map coming from the induced map in homotopy groups coming from $(\star)$. We shall abuse the notation and assume $MU$ to be the spectra $\widetilde{MU}$. In the stable homotopy category we have $$MU \simeq \text{hocolim } S^{-2n}\wedge \Sigma^{\infty} MU(n)$$
+
+\noindent Now we are ready to define complex oriented cohomology theory. 
+
+\begin{definition}
+    A complex oriented cohomology theory means a generalized cohomology theory $E$, which is multiplicative and has a Thom class for every complex vector bundle. More explicitly, if $\xi \to X$ is a complex $n$-bundle there is a class $t(\xi)\in \tilde{E}^{2n}(X^{\xi})$ such that
+    \begin{itemize}
+        \item[(i)] The image of $t(\xi)$ under the composition of following map goes to $1$, $$\tilde{E}^{2n}(X^{\xi})\to \tilde{E}^{2n}(\ast^{\xi})\to \tilde{E}^{2n}(S^{2n})\to E^0(*)$$
+        \item[(ii)] The class $t(\xi)$ should be natural under pullbacks. 
+        \item[(iii)] $t(\xi \oplus \eta)= t(\xi). t(\eta)$.   
+    \end{itemize}
+\end{definition}
+
+The following proposition from \cite{dieck} would help us to define the complex oriented cohomology theory in a more subtle way, which would help us to adopt the definition for Real oriented spectra/cohomology theory. 
+
+\begin{proposition}
+    Any class $x \in \tilde{E}^2(\mathbb{C}P^{\infty})$ that goes to $1$ under the pullback of $i: \mathbb{C} P^1 \to \mathbb{C} P^{\infty}$ gives us a complex orientation on $E$.
+\end{proposition}
+
+\begin{definition}\ts{Complex oriented spectra.} Let, $E$ be a multiplicative ring spactra it said to have a complex orientation if there exist a map $u : \Sigma^{\infty}S^{-2}\wedge BU(1) \to E$ such that the following diagram commutes \[\begin{tikzcd}[ampersand replacement=\&]
+	{} \& {\mathbb{S} \simeq\Sigma^{\infty} S^{-2} \wedge \mathbb{C}P^1} \& E \\
+	\&\& {\Sigma^{\infty} S^{-2} \wedge BU(1)}
+	\arrow["1", from=1-2, to=1-3]
+	\arrow["i"', from=1-2, to=2-3]
+	\arrow["u", from=1-3, to=2-3]
+\end{tikzcd}\] We say corresponding $\tilde{u} \in \tilde{E}^2 \mathbb{C}P^2$ is the corresponding complex orientation class. 
+\end{definition}
+
+\subsection*{Examples}
+
+\noindent \ts{Eilenberg-Maclane spectra $E = H\mathbb{Z}$}. This is simply because $H^2(\mathbb{C}P^1)= H^2(\mathbb{C} P^{\infty})$.
+
+\section{Lecture 8: The Real complex cobordism spectrum $MU_{\mathbb{R}}$}
+
+\newcommand{\mr}{MU_{\mathbb{R}}}
+
+
+\begin{center}
+    \Large (Speaker: \textbf{Shantabrata Saha})
+\end{center}
+
+%--------------
+
+\section{Lecture 9: The Norm construction}
+
+\begin{center}
+    \Large (Speaker: \textbf{Samik Basu})
+\end{center}
+
+\noindent Recall the blueprint of the proof of Kervaire invariant one. Construct a ring spectrum $\Omega_{\mathbb{O}}$ satisfying, 
+
+\begin{itemize}
+    \item[(i)] (Periodicity) $\pi_*(\Omega_{\mathbb{O}}) = \pi_{*+256}(\Omega_{\mathbb{O}})$.
+    \item[(ii)] (Detection) If $h_j^2$ in $E_2$ page of the slice spectral sequence corresponds $\Theta_j \in \pi^{s}_{2^{j+1}-2}$ then image $\theta_j$ inside $\pi_*(\Omega_{\mathbb{O}})$ is non-trivial.
+    \item[(iii)] (Gap) For $-4< i < 0$, $\pi_i \Omega_{\mathbb{O}} =0$ which implies $\theta_j$ doesn't exist (or trivial) for $j \geq 7$. 
+\end{itemize}
+
+\noindent HHR constructed one such spectra $\Omega_{\mathbb{O}}=(D^{-1}N_{C_2}^{C_8}\mr)^{hC_8}$. To understand this we need to understand the Norm construction precisely. There is a construction using diagram spectra \cite{MandellMaySchwedeShipley2001} on which we can define the norms easily. But we follow the appendix of \cite{HHR} for major part of this lecture to see the norm construction. Also we will be assuming $G$ to be a finite set. 
+
+\subsection*{Norm for based $G$-spaces}
+
+Suppose $X$ is a topological space and $|G|=n$, then there is a $\Sigma_n$ action on $X^n$ which induces a $G$ action on $X^n$ via the group homomorphism $G \to \Sigma_n$. So from a topological space $X$ (on which there is no group action) we get a space $X^n$ on which we have a action of $G$. We write this as $$N_e^G(X)= X^n$$ If we have started with a $H\leq G$-space $X$ then on $X^{\abs{G/H}}$ we have a action $G$. So perhaps for $H$-spaces we can define, $$N_{H}^G(X)= \text{Map}^{H}(G,X)$$ This is the Norm at the space level. But for spectra level some complication arises but the core idea remains the same.
+
+\subsection*{Norm for spectra} \newcommand{\Sp}{\mathbf{Sp}}
+\noindent For a subgroup $H\subset G$ the norm is a symmetric-monoidal functor
+\[
+N_H^G:\ \textbf{Sp}^H \longrightarrow \textbf{Sp}^G,
+\]
+informally the ``$G$--indexed smash product'' of copies of an $H$--spectrum indexed on the coset set $G/H$, with $G$ permuting factors. The norm is the equivariant analogue of the multiplicative transfer in algebra: it promotes multiplicative structure while encoding permutation action. The norm is characterized by the following properties (the ones used in the HHR paper are highlighted):
+
+\begin{enumerate}
+\item \emph{Strong symmetric monoidality:} $N_H^G$ is symmetric monoidal and hence sends (commutative) ring objects in $\Sp^H$ to (commutative) ring objects in $\Sp^G$.
+\item \emph{Diagonal / Frobenius maps:} There is a natural map
+\[
+\mathrm{res}^G_H N_H^G(E)\longrightarrow \bigwedge_{G/H} E
+\]
+relating the restriction of the norm to the indexed smash of copies of $E$.
+\item \emph{Homotopical compatibility:} $N_H^G$ commutes with shifted colimits. 
+\item \emph{commutative with $\Sigma^{\infty}$:} $N_H^G(\Sigma_{H}^{\infty}X_{+})=\Sigma_{G}^{\infty}\text{Map}^{H}(G,X_{+})$
+\end{enumerate}
+
+\noindent The idea is to do a general construction for a monoidal category $\mathcal{C}$. If $p : I \to J$ is a surjective map one can define a functor $$p_\otimes:\mathcal C^I\longrightarrow\mathcal C^J$$ If we take $\mathcal{C}$ to be genuine orthogonal spectras $\Sp$, and $J=BG, I= BH$ one can define $N_H^G$ as the above functor. But there are some subtelty. We will discuss it later.
+
+\vspace{0.2cm} 
+
+
+\noindent Given a functor $F : J \to \ts{Cat}$, recall the Grothendieck construction $\int_{J}F$. In homotopy category $$\text{Nerve}\qty(\int_{J}F)= \text{holim}_{J}\text{Nerve}(F)$$ We will be using these kind of construction for functors like $$J \xrightarrow{S} \ts{Sets}_{\text{iso}} \to \ts{Cat}$$ For $J= BG$, $$\qty{BG \xrightarrow{S} \ts{Sets}_{\text{iso}}}\leftrightarrow \qty{\text{ set } S \text{ with } G \curvearrowright S}$$ Define, $$B_{S}G=\int_{BG}S$$ If $S = \coprod_{\alpha} G/H_{\alpha}$, $B_S(G)=\coprod_{\alpha} BH_{\alpha}$. The later one is categorical coproduct. Thus there is an equivalence of categories $$\mathcal{C}^{BH} \xrightarrow{\simeq}\mathcal{C}^{B_{G/H}G}$$
+
+
+\vspace{0.2cm}
+
+\noindent \ts{Indexed monoidal products.} Let $p\colon I\to J$ be a finite covering of finite groupoids. Given a symmetric monoidal category $(\mathcal C,\otimes,\mathbf{1})$ one has the functor categories $\mathcal C^I$ and $\mathcal C^J$. Pushing forward along $p$ by taking monoidal products over fibers gives a functor
+\[
+p_\otimes:\mathcal C^I\longrightarrow\mathcal C^J,
+\]
+the \emph{indexed monoidal product}. In the case coming from the map of action groupoids associated to $H\to G$ this $p_\otimes$ recovers the norm-like indexed smash product. 
+
+\begin{proposition}
+    \cite{HHR} There is a finite covering $p : B_{G/H}G \to BG$.
+\end{proposition} \noindent So, we can define as in the following diagram: \[\begin{tikzcd}[ampersand replacement=\&]
+	{\mathcal{C}^{BH}} \& {\mathcal{C}^{B_{G/H}G}} \\
+	\& {\mathcal{C}^{BG}}
+	\arrow["\simeq"{description}, draw=none, from=1-1, to=1-2]
+	\arrow["{N_H^G}"', color={rgb,255:red,92;green,92;blue,214}, dashed, from=1-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+\end{tikzcd}\] here $\mathcal{C}$ is the category of orthogonal spectra. From the properties of indexed monoidal product we recover the desired properties of norm. 
+
+
+\subsection*{Adjunctions and formal properties}
+While the norm is not simply induction or coinduction, it fits into the web of change-of-group functors. Schematically one often records adjunction-like maps:
+\[
+\begin{tikzcd}
+\Sp^H \ar[r,"N_H^G",shift left=1.2] & \Sp^G \ar[l,"\mathrm{Res}^G_H",shift left=1.2]
+\end{tikzcd}
+\]
+and there are compatibility isomorphisms for composite norms: if $K\subset H\subset G$ then
+\[
+N_H^G\circ N_K^H \xrightarrow{\ \cong\ } N_K^G
+\]
+up to the coherences supplied by the point-set/operadic model.
+
+
+
+
+\begin{example}
+    For a non-equivariant $E_\infty$--ring $R$ the norm from the trivial subgroup produces a genuine $G$--equivariant $E_\infty$--ring
+\[
+N_e^G R,
+\]
+whose underlying naive spectrum is equivalent to the $G$--permuted smash $\bigwedge_G R$ but endowed with the genuine equivariant multiplicative structure necessary for Hill--Hopkins--Ravenel's constructions.
+\end{example}
+
+\subsection*{Ending Notes/Remarks.} Observe that $N_e^G(S^n)=S^{n\rho_G}, N_H^G(S^{m\rho_H})=S^{m\rho_G}, N_H^G(S^V)= S^{\text{ind}_H^GV}$. Recall that for, $X \in \Sp^H$, $$X \simeq \text{colim } S^{-V}\wedge X({V})$$ colimit is taken over $V \in \text{RO}(H)$. Thus $N_H^G(X)$ can be written as colimit of similar types of smash product. Also, recall that slice cells are of the form, $$\begin{cases}
+    \mathcal{S}(m,K) = G_{+}\wedge_{K} S^{m\rho_K} & \to \text{ regular }\\
+    \Sigma^{-1} \mathcal{S}(m,K) & \to \text{ isotropic if } K \neq e
+\end{cases}$$ 
+
+\begin{proposition}
+   \cite{HHR} $H \leq G$ and $\widehat{W}$ is wedge of regular $H$-slices then $N_H^G\widehat{W}$ is wedge of regular $G$-slices. 
+\end{proposition}
+
+\noindent Later in this seminar we will be looking at the slice decomposition of $N_{C_2}^{C_8}\mr=: MU^{((C_8))}$, this will help us to understand the ring spectra $\Omega_{\mathbb{O}}$, also it will help us in computations. It will turn out that the slice tower of $MU^{((G))}$ is of the form $$\widehat{W}\wedge H \zz$$ where $\widehat{W}$ is made of regular slices/ wedge of regular slice cells. 
+
+\noindent 
+
+%------------------
+
+\section{Lecture 10,11: Slices of $MU^{((G))}$}
+
+\begin{center}
+    \Large (Speaker: \textbf{Abhinandan Das})
+\end{center}
+
+\noindent Recall that, a spectrum is called \ts{isotropic} if the slices of $X$ are of the form $P^n_nX =H\zz \wedge \textbf{Slice}$ here the slice is wedge of cells of the form $S^{m\rho_K}, \Sigma^{-1}S^{m\rho_K}$ where $K \leq G$ and $K \neq \qty{e}$ and the spectrum is called \ts{pure} if the slices are of the from $P^n_nX =H\zz \wedge \text{Slice}$ where the slice is wedge of cells $S^{m\rho_{K}}$. Also, refinement of a spectra $X$ is, $$\bigvee \qty{\text{Slices of dim-m}} \xrightarrow{\text{isom in } \pi^u_m} X$$ Finally recall the following lemma we proved in last talk,
+
+\begin{lemma} \label{slice:1}
+    Let, $\widehat{W}\to X$ is a refinement of $\pi_{2k}^{u}X$ then $$H\zz \wedge \widehat{W} \xrightarrow{w.e} P^{2k}_{2k}X$$
+\end{lemma}
+
+\noindent The aim of these two talks are to get the slice decompositions for $MU^{((G))}$. The final result is the following: 
+
+\begin{theorem}(\ts{Slice Theorem}) \label{slice:thm}
+    $MU^{((G))}$ is an isotropic pure spectrum. More formally $$P_n^nMU^{((G))}=\begin{cases}
+        \ast & \text {if } n=\text{ odd}\\
+        H\zz \wedge \qty(\bigvee G_{+}\wedge_{K}S^{m\rho_K}), K\neq \qty{e} &  \text{if } n=\text{ even}
+    \end{cases}$$
+\end{theorem}
+
+\section{Lecture 12: The Gap, Periodicity Theorem and Finishing }
+\setlength{\parindent}{0em}
+\parskip 0.75em
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{center}
+    \Large (Speaker: \textbf{Samik Basu})
+\end{center}
+
+
+In this talk we will construct the Spectra $\Omega_{\mathbb{O}}$ mentioned in the Introductory talk as well as in Lecture-9. We will see that for $\Omega_{\mathbb{O}}= (D^{-1}N_{C_2}^{C_8}MU_{\R})^{hC_8}$ where $D \in \pi_{19\rho_G}^{G}(MU^{((C_8))})$ the following desired properties
+
+\begin{itemize}
+    \item \ts{Gap.} $\pi_i^G(D^{-1}MU^{((C_8))})$ is trivial for $-4<i<0$.
+    \item  \ts{Periodicity} $\pi_*(\Omega_{\mathbb{O}})= \pi_{*+256}(\Omega_{\mathbb{O}})$. 
+    \item \ts{Homotopy Fixed Point Theorem.} $D^{-1}MU^{((C_8))}\simeq F(EC_{8+}, D^{-1}MU^{((C_8))})$.
+\end{itemize}
+
+These three would imply $\pi_i(\Omega_{\mathbb{O}})=0$ for $i \geq 0$. Modulo 'Detection theorem' we have proved non existance of Kervaire invariant one beyond $126$. The techniques involved in this talk is pretty general in the conext of equivariant homotopy theory. 
+
+\subsection*{Proof of The Gap Theorem}
+
+For the most of the talk $G = C_{2^n}$ and $g = |G|$. If $X$ is a $G$-spectra with slices $P_n^nX = H\zz
+ \wedge \widehat{\mathcal{S}}$ where $\widehat{S}$ is wedge of cells $G_{+}\wedge_{H}S^{k\rho_H}$, $H \neq \qty{e}$. Let's look at $$\pi_i^G(H\zz \wedge G_{+}\wedge_{H} S^{k\rho_H})= \pi_i^H(H\zz\wedge S^{k\rho H})$$ for $k\geq 0$ the spectra inside is conncetive so automatically zero in the desired range of $i$. If $k$ is negative and $k =-n$ then the group is equal to $H^{i}_H(S^{m\rho_H};\mathbb{Z})$. This is trivial in the range we desire by \ref{prop:gap} in an eariler lecture. So any $G$-spectra that is pure and isotropic has this gap propety. 
+
+ For our case $D^{-1}MU^{((G))}$ for $D \in \pi^{G}_{m\rho_G}(MU^{((G))})$ is constructed by taking a telescope, $$\text{hocolim } \qty(MU^{((G))}\xrightarrow{D}\Sigma^{-m\rho_G}MU^{((G))}\cdots)$$ colimit commutes with the homotopy group and each of the steps are pure and isotropic by Slice theorem \ref{slice:thm}. So the gap property holds for $D^{-1}MU^{((G))}$.
+
+\subsection*{The Periodicity Theorem.}
+
+$MU^{((G))}$ is conncetive $G$-spectra so no Periodicity is expected over here. But while inverting $D$ alll the multiples of $D$ become invertible which turns the connective propety to periodic. General approach to determine periodicity is to take Slice spectral sequence.
+
+
+\begin{theorem}
+    (\ts{Slice spectral sequence} ) For $s \in \mathbb{Z}$ and $t \in RO(G)$ there is a spectral sequence with $E_2$ page, $$E_2^{s,t}= \pi_{t-s}^{G} P^{\dim t}_{\dim t}X \Rightarrow \pi_{t-s}^G(X)$$
+\end{theorem}
+Here $X$ is a $G$-spectra. The slice spectral sequence is multiplicative. Recall from the last lecture $$\bigvee_{k} P^k_kMU^{((G))} \simeq H\zz \wedge S^{0}[G.\bar{r_1},\cdots]$$ and $P_0^0MU^{((G))}=H\zz$. Note that the Euler class $a_{\sigma}\in E_2^{1,1-\sigma}$. Simply due to degree reason this class and all it's powers survives till the $E_{\infty}$-page of slice spectral sequence of $MU^{((G))}$. There is Orientation class $u_{\sigma}$ in $E_2^{0,2-2\sigma}$. All the power of this however doesn't survive which helps us to get the desired element $D$. This willl be discussed later. For the moment being we want to focus on $d_r(u^k)$.
+
+\underline{Looking at $d_r(u^k) \in E^{r,2k-2k\sigma+r-1}$ :}
+
+%-------------------------------
+
+\newpage
+\begin{thebibliography}{99}
+
+\bibitem{Pontryagin1938}
+L. S. Pontryagin, \emph{A classification of mappings of the three-dimensional complex into the two-dimensional sphere}, Rec. Math. [Mat. Sbornik] N.S. \textbf{9} (1938), 331–363.
+
+\bibitem{Kervaire1960}
+M. Kervaire, \emph{A manifold which does not admit any differentiable structure}, Comment. Math. Helv. \textbf{34} (1960), 257–270.
+
+\bibitem{KervaireMilnor1963}
+M. Kervaire and J. Milnor, \emph{Groups of homotopy spheres: I}, Ann. of Math. (2) \textbf{77} (1963), 504–537.
+
+\bibitem{BrownPeterson1966}
+E. H. Brown Jr. and F. P. Peterson, \emph{The Kervaire invariant of (8k + 2)-manifolds}, Bull. Amer. Math. Soc. \textbf{72} (1966), 526–530.
+
+\bibitem{Browder1969}
+W. Browder, \emph{The Kervaire invariant of framed manifolds and its generalization}, Ann. of Math. (2) \textbf{90} (1969), 157–186.
+
+\bibitem{Milnor1956}
+J. Milnor, \emph{On manifolds homeomorphic to the 7-sphere}, Ann. of Math. (2) \textbf{64} (1956), 399–405.
+
+\bibitem{Smale1961}
+S. Smale, \emph{Generalized Poincaré's conjecture in dimensions greater than four}, Ann. of Math. (2) \textbf{74} (1961), 391–406.
+
+\bibitem{BarrattMahowaldTangora}
+M. G. Barratt, M. Mahowald, J. H. C. Whitehead, and M. Tangora, \emph{Some homotopy groups of spheres}, Topology \textbf{1} (1962), 15–22.
+
+\bibitem{HHR}
+M. Hill, M. Hopkins, and D. Ravenel, \emph{On the nonexistence of elements of Kervaire invariant one}, Ann. of Math. (2) \textbf{184} (2016), 1–262.
+
+\bibitem{HillHopkins2016}
+M.~A. Hill and M.~J. Hopkins, \emph{Equivariant symmetric monoidal structures}, J. Topol. \textbf{9} (2016), 845--882.
+
+\bibitem{MandellMaySchwedeShipley2001}
+M.~A. Mandell, J.~P. May, S.~Schwede, and B.~Shipley, \emph{Model categories of diagram spectra}, Proc. London Math. Soc. (3) \textbf{82} (2001), 441--512.
+
+\bibitem{Atiyah1966}
+M.~F. Atiyah, \emph{K-theory and reality}, Quart. J. Math. Oxford Ser. (2) \textbf{17} (1966), 367--386.
+
+
+\bibitem{HuKriz2001}
+P.~Hu and I.~Kriz, \emph{Real-oriented homotopy theory and an analogue of the Adams–Novikov spectral sequence}, Topology \textbf{40} (2001), 317--399.
+
+\bibitem{dieck} T.T Dieck, Algebraic Topology
+
+\end{thebibliography}
+
+\end{document}

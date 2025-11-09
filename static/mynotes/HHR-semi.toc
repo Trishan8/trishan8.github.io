@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Lecture 1: Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Lecture 2,3: Equivariant Stable Homotopy Theory}{4}{section.2}%
+\contentsline {paragraph}{($\textbf {Sp}_1$)}{5}{theorem.2.1}%
+\contentsline {paragraph}{($\textbf {Sp}_2$)}{5}{theorem.2.1}%
+\contentsline {paragraph}{($\textbf {Sp}_3$)}{5}{theorem.2.1}%
+\contentsline {paragraph}{($\textbf {Sp}_4$)}{5}{theorem.2.1}%
+\contentsline {paragraph}{($\textbf {Sp}_5$)}{5}{theorem.2.1}%
+\contentsline {paragraph}{($\textbf {Sp}_6$)}{5}{theorem.2.1}%
+\contentsline {section}{\numberline {3}Lecture 4,5: Macky Functors, Homotopy, Homology}{6}{section.3}%
+\contentsline {section}{\numberline {4}Lecture 5,6 : The Slice Filtraions}{11}{section.4}%
+\contentsline {section}{\numberline {5}Lecture 7: The Complex cobordism}{11}{section.5}%
+\contentsline {section}{\numberline {6}Lecture 8: The Real complex cobordism spectrum $MU_{\mathbb {R}}$}{13}{section.6}%
+\contentsline {section}{\numberline {7}Lecture 9: The Norm construction}{13}{section.7}%
+\contentsline {section}{\numberline {8}Lecture 10,11: Slices of $MU^{((G))}$}{16}{section.8}%
+\contentsline {section}{\numberline {9}Lecture 12: The Gap, Periodicity Theorem and Finishing }{16}{section.9}%
